@@ -1,73 +1,91 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Contract Management System
 
-Currently, two official plugins are available:
+A React + TypeScript based contract management system that allows users to create reusable contract blueprints, generate contracts from templates, and manage the full contract lifecycle.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project was built as part of a frontend engineering assignment to demonstrate state management, component architecture, and workflow-driven UI design.
 
-## React Compiler
+##  Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 1. Blueprint Creation
+- Create reusable contract templates (Blueprints)
+- Supported field types:
+  - Text
+  - Date
+  - Signature
+  - Checkbox
+- Store field metadata:
+  - Type
+  - Label
+  - Position
+- Blueprints are stored using localStorage (mock persistence)
 
-## Expanding the ESLint configuration
+### 2. Contract Creation from Blueprint
+- Select an existing blueprint
+- Generate a contract that inherits all blueprint fields
+- Dynamically render fields
+- Allow users to fill contract values
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 3. Contract Lifecycle Management
+Each contract follows a controlled lifecycle:
+Created → Approved → Sent → Signed → Locked
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- State transitions are enforced (no skipping steps)
+- Current status and available actions are clearly displayed
+- Locked contracts cannot be edited
+- Revoked contracts cannot proceed further
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 4. Contract Listing Dashboard
+- View all contracts in a table
+- Display:
+  - Contract name
+  - Blueprint name
+  - Status
+  - Created date
+  - Action buttons
+- Supports filtering by status:
+  - Active
+  - Pending
+  - Signed
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+##  Tech Stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- React
+- TypeScript
+- Vite
+- LocalStorage (mock backend)
+- Git & GitHub for version control
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+##  Project Structure
+src/
+├── pages/
+│ ├── BlueprintPage.tsx
+│ ├── CreateContractPage.tsx
+│ └── DashboardPage.tsx
+├── data/
+│ └── storage.ts
+└── App.tsx
+---
+
+##  Setup Instructions
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/PrachiCYBERsec/contract-management-system.git
+   Install dependencies
+
+2. Install dependencies
+  npm install
+
+
+3.Run the project
+  npm run dev
+
+
+
+
+>>>>>>> dd6755c7bf00ba9f9a57827377d77c623a5e21ee
